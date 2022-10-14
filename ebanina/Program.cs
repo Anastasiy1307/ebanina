@@ -23,13 +23,13 @@ namespace ebanina
                 {
 
                     result = program.sinCos(x);
-                    result = program.zag1();
+                    //result = program.zag1();
 
                 }
                 else
                 {
                     result = program.Lnlog(x);
-                    result = program.zag0();
+                    //result = program.zag0();
                 }
                 Console.WriteLine(result);
                 
@@ -50,12 +50,14 @@ namespace ebanina
             double ctan = program.Ctangens(sin, cos);
             double sec = program.Sec(cos);
             return (((((ctan / sec) - tan) * sin) / cos) * ((Math.Pow(sin + cos + cos, 2))));
+            // return (((((program.zag0() / program.zag1()) - program.zag2()) * program.zag3()) / program.zag4()) * ((Math.Pow(program.zag3() + program.zag4() + program.zag4(), 2))));
         }
         public double Lnlog(int x)
         {
             Program program = new Program();
             double ln = program.Ln(x);
             return (((((program.Log(5, Math.Pow(x, 3)) * program.Log(10, x)) + program.Log(3, x)) / ln) + (ln * program.Log(5, x))));
+            // return (((((program.zag0() * program.zag0()) + program.zag0()) / program.zag1()) + (program.zag1() * program.zag0())));
         }
         public double Sinus(double x)
         {
@@ -142,6 +144,19 @@ namespace ebanina
         {
             return 0;
         }
+        public int zag2()
+        {
+            return 2;
+        }
+        public int zag3()
+        {
+            return 3;
+        }
+        public int zag4()
+        {
+            return 4;
+        }
+       
     }
     
 }
