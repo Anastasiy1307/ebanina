@@ -13,27 +13,49 @@ namespace ebanina
         
         static void Main(string[] args)
         {
-            int x = 30;
-            Program program   = new Program();
+            try
+            {
+                Console.Write("Введите число: ");
+                int x = Convert.ToInt32(Console.ReadLine());
+                Program program = new Program();                
+                double result;
+                if (x <= 0)
+                {
+
+                    result = program.sinCos(x);
+                    result = program.zag1();
+
+                }
+                else
+                {
+                    result = program.Lnlog(x);
+                    result = program.zag0();
+                }
+                Console.WriteLine(result);
+                
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Неверные входные данные");
+            }
+            Console.ReadKey();
+
+        }
+        public double sinCos(int x)
+        {
+            Program program = new Program();
             double sin = program.Sinus(x);
             double cos = program.Cosinus(x);
-            double tan = program.Tangens(sin,cos);
+            double tan = program.Tangens(sin, cos);
             double ctan = program.Ctangens(sin, cos);
             double sec = program.Sec(cos);
+            return (((((ctan / sec) - tan) * sin) / cos) * ((Math.Pow(sin + cos + cos, 2))));
+        }
+        public double Lnlog(int x)
+        {
+            Program program = new Program();
             double ln = program.Ln(x);
-            double result;
-            if (x<=0)
-            {
-           
-                result = (((((ctan / sec) - tan) * sin) / cos) * (Math.Pow((sin + cos) + cos, 2)));
-
-            }
-            else
-            {
-                result = (((((program.Log(5, Math.Pow(x, 3)) * program.Log(10, x)) + program.Log(3, x)) / ln) + (ln * program.Log(5, x))));
-            }
-            Console.WriteLine(result);
-            Console.ReadKey();
+            return (((((program.Log(5, Math.Pow(x, 3)) * program.Log(10, x)) + program.Log(3, x)) / ln) + (ln * program.Log(5, x))));
         }
         public double Sinus(double x)
         {
@@ -111,6 +133,14 @@ namespace ebanina
             while (Math.Pow(Math.E, stepen) <= chicl)
                 stepen += 0.001;
             return stepen;
+        }
+        public int zag1()
+        {
+            return 1;
+        }
+        public int zag0()
+        {
+            return 0;
         }
     }
     
